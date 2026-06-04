@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBS 3304 - ملخص الاختبار النهائي</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+  :root {
+    --bg: #0a0e1a;
+    --card: #111827;
+    --card2: #1a2235;
+    --border: #1e3a5f;
+    --accent: #00d4ff;
+    --accent2: #ff6b35;
+    --accent3: #00ff88;
+    --accent4: #ffd700;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --danger: #ff4757;
+    --warn: #ffa502;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a2235 50%, #0d1b2e 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 30px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 30px rgba(0,212,255,0.15);
+  }
+
+  .header h1 {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  .header .subtitle {
+    color: var(--muted);
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .badge {
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+
+  .badge-tf { background: rgba(0,255,136,0.15); border: 1px solid var(--accent3); color: var(--accent3); }
+  .badge-mc { background: rgba(0,212,255,0.15); border: 1px solid var(--accent); color: var(--accent); }
+  .badge-match { background: rgba(255,107,53,0.15); border: 1px solid var(--accent2); color: var(--accent2); }
+  .badge-open { background: rgba(255,215,0,0.15); border: 1px solid var(--accent4); color: var(--accent4); }
+
+  .nav-tabs {
+    display: flex;
+    gap: 5px;
+    padding: 15px 20px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    position: sticky;
+    top: 120px;
+    z-index: 99;
+  }
+
+  .nav-tab {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    font-size: 0.85em;
+    white-space: nowrap;
+    transition: all 0.2s;
+    background: transparent;
+    color: var(--muted);
+  }
+
+  .nav-tab.active, .nav-tab:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
+
+  .content { display: none; padding: 20px; max-width: 900px; margin: 0 auto; }
+  .content.active { display: block; }
+
+  .chapter-header {
+    background: linear-gradient(135deg, var(--card2), var(--card));
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .chapter-header h2 {
+    font-size: 1.4em;
+    font-weight: 900;
+    color: var(--accent);
+  }
+
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    padding: 12px 18px;
+    font-weight: 800;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--border);
+    background: var(--card2);
+  }
+
+  .section-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85em;
+    font-weight: 900;
+    background: var(--accent);
+    color: #000;
+    flex-shrink: 0;
+  }
+
+  .section-body { padding: 18px; }
+
+  .original {
+    background: rgba(0,212,255,0.05);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    font-size: 0.9em;
+    color: #b8d4e8;
+    direction: ltr;
+    text-align: left;
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  .original .label {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.8em;
+    display: block;
+    margin-bottom: 6px;
+    font-style: normal;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .translation {
+    background: rgba(0,255,136,0.05);
+    border: 1px solid rgba(0,255,136,0.15);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    font-size: 0.9em;
+  }
+
+  .translation .label {
+    font-weight: 700;
+    color: var(--accent3);
+    font-size: 0.8em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .qa-box {
+    background: rgba(255,215,0,0.08);
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 12px;
+  }
+
+  .qa-q {
+    color: var(--accent4);
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+  }
+
+  .qa-a {
+    color: var(--accent3);
+    font-weight: 700;
+    font-size: 0.95em;
+  }
+
+  .trap {
+    background: rgba(255,71,87,0.1);
+    border: 1px solid rgba(255,71,87,0.4);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 10px;
+    font-size: 0.88em;
+  }
+
+  .trap::before {
+    content: "⚠️ فخ الاختبار: ";
+    font-weight: 900;
+    color: var(--danger);
+  }
+
+  .code-box {
+    background: rgba(255,107,53,0.08);
+    border: 1px solid rgba(255,107,53,0.25);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 10px;
+    font-size: 0.88em;
+  }
+
+  .code-box::before {
+    content: "🔑 شفرة الاختبار: ";
+    font-weight: 900;
+    color: var(--accent2);
+  }
+
+  .table-wrap { overflow-x: auto; margin: 12px 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+  }
+
+  th {
+    background: var(--card2);
+    padding: 10px 14px;
+    text-align: right;
+    font-weight: 800;
+    border: 1px solid var(--border);
+    color: var(--accent);
+  }
+
+  td {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  .highlight-row td { background: rgba(255,71,87,0.08) !important; }
+
+  code {
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: var(--accent);
+    direction: ltr;
+  }
+
+  .open-ended-box {
+    background: rgba(255,215,0,0.06);
+    border: 2px solid var(--accent4);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 12px 0;
+  }
+
+  .open-ended-box h4 {
+    color: var(--accent4);
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    font-weight: 800;
+  }
+
+  .open-answer {
+    background: rgba(0,255,136,0.1);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-weight: 700;
+    color: var(--accent3);
+    direction: ltr;
+    text-align: left;
+    font-size: 0.95em;
+  }
+
+  .review-table th { background: rgba(0,212,255,0.1); }
+  
+  .final-review {
+    background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(0,255,136,0.08));
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .final-review h3 {
+    color: var(--accent);
+    font-size: 1.2em;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  ul { padding-right: 20px; }
+  ul li { margin-bottom: 6px; }
+
+  .good { color: var(--accent3); font-weight: 700; }
+  .bad { color: var(--danger); font-weight: 700; }
+  .warn { color: var(--warn); font-weight: 700; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.3em; }
+    .nav-tabs { top: 110px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 CYBS 3304 — ملخص الاختبار النهائي</h1>
+  <div class="subtitle">الفصول 5 · 6 · 7 · 8 — مصمم لكل أنواع الأسئلة</div>
+  <div class="badge-row">
+    <span class="badge badge-tf">✓ True/False</span>
+    <span class="badge badge-mc">◉ MCQ</span>
+    <span class="badge badge-match">⇄ Matching</span>
+    <span class="badge badge-open">✎ Open Ended</span>
+  </div>
+</div>
+
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showTab('ch5')">Chapter 5 📁</button>
+  <button class="nav-tab" onclick="showTab('ch6')">Chapter 6 👤</button>
+  <button class="nav-tab" onclick="showTab('ch7')">Chapter 7 🔧</button>
+  <button class="nav-tab" onclick="showTab('ch8')">Chapter 8 🔑</button>
+</div>
+
+<!-- ==================== CHAPTER 5 ==================== -->
+<div id="ch5" class="content active">
+  <div class="chapter-header">
+    <h2>Chapter 5 — File System Maintenance</h2>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">1</span> What is a File System?</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"A file system is the method an operating system uses to organize and manage files on a storage device, such as a hard drive, SSD, or USB flash drive. It defines how data is stored, accessed, and organized."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>نظام الملفات هو الطريقة التي يستخدمها نظام التشغيل لتنظيم وإدارة الملفات على جهاز التخزين. يحدد كيف يُخزَّن البيانات ويُصل إليها وينظَّم.</div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: Define file system</h4>
+        <div class="open-answer">Organize and manage files on a storage device</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">2</span> Functions of a File System</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"It structures the storage device into a hierarchy of directories and files. / It keeps track of which blocks of storage are used by which files and which blocks are free. / It manages permissions to control who can access and modify files. / For each file and directory, the file system stores metadata, which is information about the data itself. This includes details like the file size, type, creation date, modification date, and permissions."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li>يهيكل التخزين في تسلسل هرمي من المجلدات والملفات</li>
+          <li>يتتبع الكتل المستخدمة والفارغة</li>
+          <li>يدير الأذونات</li>
+          <li>يخزن الـ <strong>Metadata</strong>: الحجم، النوع، تاريخ الإنشاء، التعديل، الأذونات</li>
+        </ul>
+      </div>
+      <div class="qa-box">
+        <div class="qa-q">🧠 ما هو الـ Metadata؟</div>
+        <div class="qa-a">✅ Information about the data itself (size, type, creation date, permissions)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">3</span> Types of File Systems</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"FAT32: An older, simple file system widely compatible with many operating systems and removable devices. However, it has limitations like a 4GB maximum file size. / exFAT: Developed by Microsoft as an improvement over FAT32, allowing for larger file sizes. / NTFS: The default file system for modern Windows operating systems. It offers advanced features like security permissions, encryption, compression, and journaling. / APFS: The default file system for macOS, iOS, and other Apple devices, designed for performance and security. / Ext4: A widely used file system in Linux, known for its performance, scalability, and reliability."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>النظام</th><th>يُستخدم في</th><th>أهم ميزة/عيب</th></tr>
+          <tr><td><strong>FAT32</strong></td><td>الجميع</td><td class="bad">❌ حد أقصى 4GB للملف</td></tr>
+          <tr><td><strong>exFAT</strong></td><td>Flash drives</td><td class="good">✅ أحجام أكبر من FAT32</td></tr>
+          <tr><td><strong>NTFS</strong></td><td>Windows</td><td class="good">✅ أمان + تشفير + ضغط</td></tr>
+          <tr><td><strong>APFS</strong></td><td>Apple (macOS/iOS)</td><td class="good">✅ أداء + أمان</td></tr>
+          <tr><td><strong>HFS+</strong></td><td>macOS القديم</td><td>للتوافق مع الأنظمة القديمة</td></tr>
+          <tr><td><strong>Ext4</strong></td><td>Linux</td><td class="good">✅ أداء + موثوقية</td></tr>
+          <tr><td><strong>XFS</strong></td><td>Linux/Unix</td><td class="good">✅ أداء عالٍ + قابلية للتوسع</td></tr>
+          <tr><td><strong>Btrfs</strong></td><td>Linux</td><td class="good">✅ نسخ احتياطية + سلامة البيانات</td></tr>
+        </table>
+      </div>
+      <div class="code-box">Windows ← NTFS / Linux ← Ext4 / Apple ← APFS / ملف أكبر من 4GB ← ❌ مو FAT32</div>
+      <div class="trap">SUID يشتغل بصلاحيات المالك الأصلي (Owner) وليس المستخدم الذي شغّله</div>
+      <div class="qa-box">
+        <div class="qa-q">🧠 أي نظام لا يقدر يخزن ملف حجمه 5GB؟</div>
+        <div class="qa-a">✅ FAT32 (الحد الأقصى 4GB)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">4</span> Windows vs Linux File System</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Windows uses a drive letter-based hierarchy. Each physical or logical drive is assigned a letter (e.g., C:, D:). / Linux employs a single, unified directory hierarchy starting from the root directory (/). All physical storage devices are mounted as subdirectories within this single tree. The idea is based on the 'everything is a file' concept. / File and directory names are generally case-insensitive (Windows) / case-sensitive (Linux). / Path Separator: backslash \ (Windows) / forward slash / (Linux)"</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>المقارنة</th><th>Windows</th><th>Linux</th></tr>
+          <tr><td>الهيكل</td><td>C:\ D:\</td><td>/ (Root)</td></tr>
+          <tr><td>حساسية الأحرف</td><td class="bad">❌ غير حساس</td><td class="good">✅ حساس</td></tr>
+          <tr class="highlight-row"><td>فاصل المسار</td><td><code>\</code> Backslash</td><td><code>/</code> Forward slash</td></tr>
+        </table>
+      </div>
+      <div class="trap">Windows = Case-insensitive (ملف.txt = ملف.TXT) / Linux = Case-sensitive (ملف.txt ≠ ملف.TXT)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">5</span> Securing File System: Linux Commands</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"The chmod command is used to modify file and directory permissions. Using octal numbers where each digit represents the permissions for owner, group, and others (read=4, write=2, execute=1). / The chown command is used to change the owner of a file or directory. / The chgrp command is used to change the group associated with a file or directory."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>الأمر</th><th>الوظيفة</th><th>مثال</th></tr>
+          <tr><td><code>chmod</code></td><td>تعديل الأذونات</td><td><code>chmod 755 file</code></td></tr>
+          <tr><td><code>chown</code></td><td>تغيير المالك (Owner)</td><td><code>chown user file</code></td></tr>
+          <tr><td><code>chgrp</code></td><td>تغيير المجموعة (Group)</td><td><code>chgrp group file</code></td></tr>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>الإذن</th><th>الرمز</th><th>الرقم</th></tr>
+          <tr><td>Read</td><td>r</td><td class="good">4</td></tr>
+          <tr><td>Write</td><td>w</td><td class="good">2</td></tr>
+          <tr><td>Execute</td><td>x</td><td class="good">1</td></tr>
+          <tr><td>All (rwx)</td><td>rwx</td><td class="good">7</td></tr>
+        </table>
+      </div>
+      <div class="code-box">Owner → chown / Group → chgrp / Permissions → chmod</div>
+      <div class="qa-box">
+        <div class="qa-q">🧠 ما هو الأمر لتغيير مالك الملف؟</div>
+        <div class="qa-a">✅ chown</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">6</span> Special Permissions: SUID & SGID</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"When set Setuid (SUID) on an executable file, it allows the file to be executed with the privileges of the owner of the file, rather than the user who is running it. / Setgid (SGID) similar to SUID, but the file is executed with the privileges of the group owner. / Special permissions are set using the numeric mode of chmod by adding an extra digit at the beginning: Setuid: 4, Setgid: 2."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>SUID (4)</strong>: يُشغَّل الملف بصلاحيات المالك الأصلي — ليس المستخدم الذي شغّله ⚠️</li>
+          <li><strong>SGID (2)</strong>: يُشغَّل بصلاحيات مالك المجموعة</li>
+        </ul>
+      </div>
+      <div class="trap">SUID يعمل بصلاحيات المالك (Owner) وليس المستخدم الذي شغّله — هذا فخ True/False كلاسيكي!</div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: What is SUID?</h4>
+        <div class="open-answer">Allows file to execute with owner's privileges, not the running user's</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">7</span> ACLs — Access Control Lists</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"ACLs provide a way to manage permissions beyond the basic owner, group, and others. / setfacl: Sets or modifies ACL entries. / getfacl: Displays the ACL entries for a file or directory."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>ACLs توفر تحكماً أدق في الأذونات يتجاوز المستوى الأساسي (owner/group/others)</div>
+      <div class="code-box">setfacl = يعدّل الأذونات / getfacl = يعرض الأذونات</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">8</span> Encryption: Linux vs Windows</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Encrypts the entire storage device, requiring a password or key to decrypt it during boot. Common tools include LUKS (Linux Unified Key Setup). / Tools like ecryptfs and fscrypt allow you to encrypt individual directories. / BitLocker Drive Encryption: Provides full volume encryption for entire drives. / Encrypting File System (EFS): Allows users to encrypt individual files and folders."</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>النظام</th><th>قرص كامل</th><th>ملفات/مجلدات فردية</th></tr>
+          <tr><td><strong>Linux</strong></td><td><strong>LUKS</strong></td><td><strong>ecryptfs / fscrypt</strong></td></tr>
+          <tr><td><strong>Windows</strong></td><td><strong>BitLocker</strong></td><td><strong>EFS</strong></td></tr>
+        </table>
+      </div>
+      <div class="trap">BitLocker = قرص كامل / EFS = ملفات فردية فقط — لا تخلط بينهم!</div>
+      <div class="qa-box">
+        <div class="qa-q">🧠 طُلب منك تشفير مجلد واحد في Windows، ماذا تستخدم؟</div>
+        <div class="qa-a">✅ EFS (وليس BitLocker)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">9</span> Auditing, FIM, Quotas</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"The Linux audit subsystem allows you to track system events, including file system access, modifications, and permission changes. / Tools like Tripwire can monitor file system integrity by creating a baseline of file attributes and alerting you to any unauthorized modifications. / Disk quotas allow administrators to limit the amount of disk space that individual users or groups can consume on a file system."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>Auditing (auditd/ausearch)</strong>: يتتبع أحداث النظام — الوصول، التعديل، تغيير الأذونات</li>
+          <li><strong>FIM (Tripwire)</strong>: يراقب سلامة الملفات ويتتبع التعديلات غير المصرح بها</li>
+          <li><strong>Quotas</strong>: يحدد مساحة التخزين لكل مستخدم/مجموعة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">10</span> UAC & Mounting Options</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"User Account Control (UAC): UAC helps prevent unauthorized modifications to the file system by prompting users for administrative privileges before allowing such changes. / When mounting file systems you can use mount options: noexec (prevent execution of binaries), nosuid (disable setuid/setgid bits), and nodev (prevent interpretation of device files)."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>UAC</strong>: يمنع التعديلات غير المصرح بها عبر طلب صلاحيات المسؤول</li>
+          <li><strong>noexec</strong>: يمنع تشغيل الملفات التنفيذية</li>
+          <li><strong>nosuid</strong>: يعطّل bits الـ SUID/SGID</li>
+          <li><strong>nodev</strong>: يمنع التعامل مع ملفات الأجهزة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-review">
+    <h3>⚡ مراجعة سريعة — Chapter 5</h3>
+    <div class="table-wrap">
+      <table class="review-table">
+        <tr><th>السؤال</th><th>الجواب</th></tr>
+        <tr><td>ما هو الـ Metadata؟</td><td>Information about the data (size, type, date, permissions)</td></tr>
+        <tr><td>File system افتراضي لـ Windows؟</td><td>NTFS</td></tr>
+        <tr><td>File system افتراضي لـ Linux؟</td><td>Ext4</td></tr>
+        <tr><td>File system افتراضي لـ Apple؟</td><td>APFS</td></tr>
+        <tr><td>FAT32 حد أقصى؟</td><td>4GB</td></tr>
+        <tr><td>chown وظيفته؟</td><td>Change file owner</td></tr>
+        <tr><td>chgrp وظيفته؟</td><td>Change file group</td></tr>
+        <tr><td>chmod وظيفته؟</td><td>Modify file permissions</td></tr>
+        <tr><td>Read = ? / Write = ? / Execute = ?</td><td>4 / 2 / 1</td></tr>
+        <tr><td>SUID يعمل بصلاحيات مَن؟</td><td>Owner (المالك) — ليس المستخدم الذي شغّله ⚠️</td></tr>
+        <tr><td>SUID رقمه؟ / SGID رقمه؟</td><td>4 / 2</td></tr>
+        <tr><td>تشفير قرص كامل في Linux؟</td><td>LUKS</td></tr>
+        <tr><td>تشفير قرص كامل في Windows؟</td><td>BitLocker</td></tr>
+        <tr><td>تشفير ملف واحد في Windows؟</td><td>EFS</td></tr>
+        <tr><td>setfacl وظيفته؟</td><td>Sets/modifies ACL entries</td></tr>
+        <tr><td>getfacl وظيفته؟</td><td>Displays ACL entries</td></tr>
+        <tr><td>Tripwire وظيفته؟</td><td>File Integrity Monitoring (FIM)</td></tr>
+        <tr><td>Linux Case-sensitive؟</td><td>✅ نعم</td></tr>
+        <tr><td>Windows Case-sensitive؟</td><td>❌ لا</td></tr>
+        <tr><td>فاصل المسار Windows؟</td><td>\ Backslash</td></tr>
+        <tr><td>فاصل المسار Linux؟</td><td>/ Forward slash</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 6 ==================== -->
+<div id="ch6" class="content">
+  <div class="chapter-header">
+    <h2>Chapter 6 — User, Group, and File Management</h2>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">1</span> User Accounts</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Each individual or process that interacts with the operating system should have a unique identity represented by a user account. This allows the system to: Authentication: Verify the identity of the user before granting access. Authorization: Determine what resources and actions the authenticated user is permitted to access or perform. Auditing: Track user activities for security monitoring and accountability."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>كل شخص أو عملية يجب أن يكون لها حساب فريد. الحساب يسمح للنظام بـ:<br>• <strong>Authentication</strong> = التحقق من الهوية قبل منح الوصول<br>• <strong>Authorization</strong> = تحديد الموارد والإجراءات المسموح بها<br>• <strong>Auditing</strong> = تتبع النشاطات للمراقبة الأمنية</div>
+      <div class="trap">Authentication ≠ Authorization — Auth = من أنت؟ / Authz = وش تقدر تسوي؟</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">2</span> Key Attributes of User Accounts</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Username / User ID: A unique numerical identifier assigned to each user account by the operating system. This is the primary identifier used internally by the system to track ownership and permissions. / Password or other authentication credentials / Home Directory: A dedicated directory assigned to each user for storing their personal files and configurations. / Default Shell: The command-line interpreter that is launched when the user logs in. / Group Membership: Users can belong to one or more groups, which simplifies permission management. / Account Status: Indicates whether the account is active, disabled, locked, or expired."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>الصفة</th><th>الوصف</th></tr>
+          <tr><td><strong>Username</strong></td><td>اسم المستخدم</td></tr>
+          <tr><td><strong>User ID (UID)</strong></td><td>رقم فريد لتتبع الملكية والصلاحيات داخلياً</td></tr>
+          <tr><td><strong>Password</strong></td><td>كلمة المرور</td></tr>
+          <tr><td><strong>Home Directory</strong></td><td>مجلد خاص للملفات الشخصية</td></tr>
+          <tr><td><strong>Default Shell</strong></td><td>محرر الأوامر عند تسجيل الدخول</td></tr>
+          <tr><td><strong>Group Membership</strong></td><td>عضوية في مجموعة أو أكثر</td></tr>
+          <tr><td><strong>Account Status</strong></td><td>نشط / معطل / مقفل / منتهي</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">3</span> Creating a User Account</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Creating a new user account usually requires administrative rights. / The administrator needs to specify a username, full name, and a password for the new user. / Assigning an account type determines the level of access and permissions the user will have (e.g., Administrator, Standard User, Guest). / The operating system creates a dedicated directory for the user to store their personal files and settings. / The new user can be added to specific groups, inheriting the permissions and rights associated with those groups."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li>يحتاج <strong>Admin rights</strong></li>
+          <li>تحديد username + full name + password</li>
+          <li>نوع الحساب يحدد مستوى الصلاحيات</li>
+          <li>النظام ينشئ Home Directory تلقائياً</li>
+          <li>إضافة للـ Groups لاكتساب صلاحياتها</li>
+        </ul>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>النظام</th><th>الأمر/الأداة</th></tr>
+          <tr><td>Linux</td><td><code>useradd</code></td></tr>
+          <tr><td>macOS</td><td><code>dscl</code></td></tr>
+          <tr><td>Windows</td><td><code>New-LocalUser</code> (PowerShell)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">4</span> Types of User Accounts</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Administrator/Superuser: This account has the highest level of control over the system. It's important to limit the use of administrator accounts for security reasons. / Standard/Regular User: This is the typical account type for everyday use. Standard users are restricted from making system-wide changes. / Guest Account: Provides temporary access to the system with very limited privileges. Guest accounts are often disabled by default for security. / System Accounts: These are created by the operating system for running system services and processes. They typically don't have interactive login capabilities. / Local Accounts: These accounts are specific to a single computer and are managed locally. / Domain Accounts: In networked environments, user accounts are managed centrally."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>النوع</th><th>الصلاحيات</th><th>ملاحظة مهمة</th></tr>
+          <tr><td><strong>Administrator</strong></td><td>أعلى مستوى</td><td class="warn">يُقلَّل استخدامه أمنياً</td></tr>
+          <tr><td><strong>Standard User</strong></td><td>للاستخدام اليومي</td><td>لا يغيّر إعدادات النظام</td></tr>
+          <tr class="highlight-row"><td><strong>Guest Account</strong></td><td>محدودة جداً</td><td class="bad">معطَّل افتراضياً ⚠️</td></tr>
+          <tr class="highlight-row"><td><strong>System Accounts</strong></td><td>للخدمات فقط</td><td class="bad">لا تسجيل دخول تفاعلي ⚠️</td></tr>
+          <tr><td><strong>Local Accounts</strong></td><td>—</td><td>خاصة بجهاز واحد</td></tr>
+          <tr><td><strong>Domain Accounts</strong></td><td>—</td><td>تُدار مركزياً</td></tr>
+        </table>
+      </div>
+      <div class="trap">Guest Account = معطَّل افتراضياً / System Accounts = لا تسجيل دخول تفاعلي</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">5</span> User Account Management</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Grant users only the minimum necessary permissions to perform their required tasks. / Strong Password Policies: Enforce complex passwords (mix of uppercase, lowercase, numbers, and special characters). Set minimum password lengths. Implement password expiration policies for regular changes. Prohibit the reuse of passwords. / Each individual should have their own unique account for accountability and tracking. Avoid shared accounts. / Implement 2FA whenever possible for an extra layer of security beyond passwords. / Implement lockout policies to prevent brute-force password attacks after a certain number of failed login attempts."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>Least Privilege</strong> = أقل الصلاحيات الضرورية فقط</li>
+          <li>كلمات مرور قوية: أحرف كبيرة + صغيرة + أرقام + رموز + حد أدنى للطول + انتهاء صلاحية + منع إعادة الاستخدام</li>
+          <li>حساب فريد لكل شخص — <strong>لا حسابات مشتركة</strong></li>
+          <li><strong>2FA</strong> = طبقة حماية إضافية</li>
+          <li><strong>Lockout</strong> = يمنع هجمات Brute-Force</li>
+        </ul>
+      </div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: What is Least Privilege?</h4>
+        <div class="open-answer">Grant only minimum necessary permissions to perform required tasks</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">6</span> Group Management</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Groups provide a mechanism to manage permissions for multiple users collectively. Instead of assigning the same permissions to each individual user, administrators can assign permissions to a group and then add users to that group. This simplifies administration and ensures consistent access control."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>المجموعات = إدارة صلاحيات عدة مستخدمين دفعة واحدة بدل تعيينها لكل واحد</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>النوع</th><th>الوصف</th></tr>
+          <tr><td><strong>Primary Group</strong></td><td>مجموعة أساسية واحدة — مرتبطة بالملفات المُنشأة افتراضياً</td></tr>
+          <tr><td><strong>Secondary Groups</strong></td><td>مجموعات إضافية لصلاحيات إضافية</td></tr>
+          <tr><td><strong>System Groups</strong></td><td>تُنشئها OS — صلاحياتها محددة مسبقاً</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">7</span> Group Commands — Matching Section</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Linux: The groupadd command is used to create new groups. sudo groupadd developers / sudo groupadd -g 1005 testers / Windows: The net localgroup command. / Linux: The usermod command is used to add users to secondary groups. The -aG options append the user to the specified groups without removing them from other groups. sudo usermod -aG developers john / Linux: Use gpasswd -d. sudo gpasswd -d sarah developers / Linux: The groupdel command is used to remove a group. sudo groupdel testers"</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>العملية</th><th>Linux</th><th>Windows</th></tr>
+          <tr><td>إنشاء مجموعة</td><td><code>groupadd</code></td><td><code>net localgroup</code></td></tr>
+          <tr><td>إضافة مستخدم لمجموعة</td><td><code>usermod -aG</code> ⚠️</td><td><code>net localgroup "G" user /add</code></td></tr>
+          <tr><td>حذف مستخدم من مجموعة</td><td><code>gpasswd -d</code></td><td><code>net localgroup "G" user /delete</code></td></tr>
+          <tr><td>حذف مجموعة</td><td><code>groupdel</code></td><td><code>net localgroup "G" /delete</code></td></tr>
+        </table>
+      </div>
+      <div class="trap">usermod -aG = يُضيف بدون حذف من المجموعات الأخرى / usermod -G = يُعيد التحديد كاملاً</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">8</span> Access Control Mechanisms</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Discretionary Access Control (DAC): The owner of a file or directory has the discretion to set permissions for other users and groups. / Mandatory Access Control (MAC): The operating system enforces access control policies based on security labels. Users cannot override these policies. MAC is often used in high-security environments. / Role-Based Access Control (RBAC): Access rights are assigned to roles, and users are then assigned to these roles. This simplifies the management of permissions for large numbers of users."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>النوع</th><th>من يتحكم؟</th><th>أين يُستخدم؟</th></tr>
+          <tr><td><strong>DAC</strong></td><td>مالك الملف</td><td>الاستخدام الشائع</td></tr>
+          <tr class="highlight-row"><td><strong>MAC</strong></td><td>النظام — المستخدم لا يتجاوزه ⚠️</td><td>البيئات عالية الأمان</td></tr>
+          <tr><td><strong>RBAC</strong></td><td>على أساس الأدوار</td><td>عدد كبير من المستخدمين</td></tr>
+        </table>
+      </div>
+      <div class="trap">MAC = المستخدم لا يستطيع تجاوز السياسات / يُستخدم في high-security environments فقط</div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: What is MAC?</h4>
+        <div class="open-answer">OS enforces access control policies based on security labels; users cannot override</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-review">
+    <h3>⚡ مراجعة سريعة — Chapter 6</h3>
+    <div class="table-wrap">
+      <table class="review-table">
+        <tr><th>السؤال</th><th>الجواب</th></tr>
+        <tr><td>Authentication vs Authorization?</td><td>Identity verification vs Permission determination</td></tr>
+        <tr><td>أمر إنشاء مستخدم Linux?</td><td><code>useradd</code></td></tr>
+        <tr><td>أمر إنشاء مستخدم Windows?</td><td><code>New-LocalUser</code></td></tr>
+        <tr><td>أي حساب معطَّل افتراضياً?</td><td>Guest Account</td></tr>
+        <tr><td>System Accounts تقدر تسجل دخول?</td><td>❌ لا — no interactive login</td></tr>
+        <tr><td>إضافة مستخدم لمجموعة Linux?</td><td><code>usermod -aG</code></td></tr>
+        <tr><td>حذف مستخدم من مجموعة Linux?</td><td><code>gpasswd -d</code></td></tr>
+        <tr><td>إنشاء مجموعة Linux?</td><td><code>groupadd</code></td></tr>
+        <tr><td>حذف مجموعة Linux?</td><td><code>groupdel</code></td></tr>
+        <tr><td>DAC مَن يتحكم?</td><td>File owner</td></tr>
+        <tr><td>MAC مَن يتحكم?</td><td>Operating system — cannot be overridden</td></tr>
+        <tr><td>RBAC أساسه?</td><td>Roles</td></tr>
+        <tr><td>Least Privilege يعني?</td><td>Minimum necessary permissions only</td></tr>
+        <tr><td>Lockout policy لمنع؟</td><td>Brute-force attacks</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 7 ==================== -->
+<div id="ch7" class="content">
+  <div class="chapter-header">
+    <h2>Chapter 7 — Patch Management, Vulnerability Scanning & Software Updates</h2>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">1</span> What is Patch Management?</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Patch management is the process of distributing and applying updates to software. It aims to fix vulnerabilities, improve performance, and ensure compliance. The process includes OS, applications, firmware, and software. / Software security patches are 'pieces of code developed to address security problems identified in software'."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>Patch management = عملية توزيع وتطبيق التحديثات على البرامج لإصلاح الثغرات وتحسين الأداء وضمان الامتثال</div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: Define patch management</h4>
+        <div class="open-answer">Process of distributing and applying updates to fix vulnerabilities and improve performance</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">2</span> Why is Patch Management Important?</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Prevent security breaches by applying patches helps fix vulnerabilities that attackers could exploit. Without regular patching, systems become easy targets for malware, ransomware, or data theft. / Close zero-day vulnerabilities are security flaws that are unknown to the software vendor or have no fix at the time of discovery. / Maintain system integrity and availability. Unpatched software can lead to system crashes, data corruption, or service interruptions. / Comply with regulatory requirements such as HIPAA and GDPR."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>Prevent security breaches</strong>: تمنع الاختراقات الأمنية</li>
+          <li><strong>Close zero-day vulnerabilities</strong>: تُغلق ثغرات يوم الصفر — ثغرات غير معروفة للمورّد وقت الاكتشاف</li>
+          <li><strong>Maintain integrity & availability</strong>: تمنع تعطل النظام وفساد البيانات</li>
+          <li><strong>Compliance</strong>: ضروري للامتثال لـ HIPAA وGDPR</li>
+        </ul>
+      </div>
+      <div class="trap">Zero-day = ثغرة غير معروفة للمورّد أو ليس لها إصلاح وقت الاكتشاف — وليس ثغرة عمرها يوم واحد!</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">3</span> Patch Management Lifecycle</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"1. Vulnerability Detection: identifying potential weaknesses. Once identified, they are usually recorded in databases such as the CVE (Common Vulnerabilities and Exposures) list. / 2. Patch Release: the software vendor creates a patch—a small piece of code designed to fix the issue, accompanied by a security advisory. / 3. Testing: tested in a safe environment to ensure it does not cause unexpected issues. / 4. Deployment: rolled out to production systems, can be automated or manual. / 5. Monitoring & Documentation: verify patch applied successfully; keep records of what patches were applied, when, and to which systems."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>#</th><th>المرحلة</th><th>الوصف</th></tr>
+          <tr><td>1</td><td><strong>Vulnerability Detection</strong></td><td>كشف الثغرات وتسجيلها في CVE</td></tr>
+          <tr><td>2</td><td><strong>Patch Release</strong></td><td>المورّد يطلق الباتش مع Security Advisory</td></tr>
+          <tr><td>3</td><td><strong>Testing</strong></td><td>اختبار في بيئة آمنة قبل التطبيق العام</td></tr>
+          <tr><td>4</td><td><strong>Deployment</strong></td><td>تطبيق على الأنظمة الإنتاجية</td></tr>
+          <tr><td>5</td><td><strong>Monitoring & Documentation</strong></td><td>مراقبة وتوثيق ما طُبِّق ومتى وعلى أي جهاز</td></tr>
+        </table>
+      </div>
+      <div class="trap">Testing يجب أن يكون قبل Deployment وليس بعده!</div>
+      <div class="code-box">CVE = Common Vulnerabilities and Exposures (قاعدة بيانات الثغرات)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">4</span> Types of Patches — Matching Section</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Security patches are specifically designed to fix known vulnerabilities. Usually prioritized over other types. / Feature updates introduce new capabilities or enhancements. Not intended to fix problems. / Hotfixes urgent patches released outside the normal update schedule to address critical issues that cannot wait. Applied quickly to minimize damage. / Coldfixes are applied during system downtime or as part of a planned reboot. Used for non-critical issues. Rolled out in batches. / Bug fixes address issues in software that affect functionality but are not related to security."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>النوع</th><th>الغرض</th><th>خصائصه</th></tr>
+          <tr><td><strong>Security Patches</strong></td><td>إصلاح ثغرات أمنية</td><td class="warn">الأولوية الأعلى دائماً ⚠️</td></tr>
+          <tr><td><strong>Feature Updates</strong></td><td>إضافة ميزات جديدة</td><td>ليس لإصلاح مشاكل</td></tr>
+          <tr class="highlight-row"><td><strong>Hotfixes</strong></td><td>مشاكل حرجة عاجلة</td><td class="bad">خارج جدول التحديث المعتاد — سريع ⚠️</td></tr>
+          <tr class="highlight-row"><td><strong>Coldfixes</strong></td><td>مشاكل غير حرجة</td><td class="good">أثناء downtime — مجدول — على دفعات</td></tr>
+          <tr><td><strong>Bug Fixes</strong></td><td>إصلاح أخطاء وظيفية</td><td>غير متعلقة بالأمان</td></tr>
+        </table>
+      </div>
+      <div class="trap">Hotfix = عاجل، خارج الجدول / Coldfix = غير عاجل، مجدول أثناء downtime</div>
+      <div class="qa-box">
+        <div class="qa-q">🧠 أي نوع من الباتشات يُطبَّق أثناء وقت التوقف؟</div>
+        <div class="qa-a">✅ Coldfix</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">5</span> How OS Ensures Secure Updates?</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Authentication: Verifying the source of updates to ensure they come from trusted entities. / Integrity Checks: Ensuring that the update files have not been tampered with during transmission. / Secure Distribution Channels: Utilizing encrypted connections and trusted networks for delivering updates. / Redundancy and Rollback Mechanisms: Allowing systems to revert to previous versions in case of faulty updates."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>Authentication</strong>: التحقق من مصدر التحديث</li>
+          <li><strong>Integrity Checks</strong>: التأكد من عدم التلاعب بالملفات أثناء النقل</li>
+          <li><strong>Secure Distribution Channels</strong>: اتصالات مشفرة وشبكات موثوقة</li>
+          <li><strong>Rollback Mechanisms</strong>: الرجوع للإصدار السابق عند فشل التحديث</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">6</span> Vulnerability Scanning</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Vulnerability scanning is the automated process of identifying security weaknesses in computer systems, networks, or applications. These weaknesses can arise from software bugs, misconfigurations, or outdated software versions. The primary goal of vulnerability scanning is to detect these issues before they can be exploited by malicious actors."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>Vulnerability scanning = العملية الآلية لتحديد الثغرات في الأنظمة والشبكات والتطبيقات قبل استغلالها</div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: What is vulnerability scanning?</h4>
+        <div class="open-answer">Automated process of identifying security weaknesses before they can be exploited</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">7</span> Vulnerability Scanning Steps & Tools</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"1. Select a Vulnerability Scanner: Popular options include Nessus, OpenVAS, and Qualys. / 2. Configure the Scanner: Set up network ranges, credentials, and scanning policies. / 3. Run the Scan: Initiate the scan to assess the system for known vulnerabilities. / 4. Review and Analyze Results: Examine the scan reports to identify detected vulnerabilities, their severity, and recommended remediation steps. / 5. Remediate Identified Issues: Apply patches, update configurations, or take other corrective actions. / 6. Schedule Regular Scans: Implement a routine scanning schedule."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>#</th><th>الخطوة</th></tr>
+          <tr><td>1</td><td>اختر أداة: <strong>Nessus</strong> أو <strong>OpenVAS</strong> أو <strong>Qualys</strong></td></tr>
+          <tr><td>2</td><td>Configure the Scanner</td></tr>
+          <tr><td>3</td><td>Run the Scan</td></tr>
+          <tr><td>4</td><td>Review and Analyze Results</td></tr>
+          <tr><td>5</td><td>Remediate Identified Issues</td></tr>
+          <tr><td>6</td><td>Schedule Regular Scans</td></tr>
+        </table>
+      </div>
+      <div class="code-box">أدوات Vulnerability Scanning الشهيرة: Nessus / OpenVAS / Qualys</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">8</span> Virtualization in Patch Management</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Virtualization adds an extra layer between the operating system and the physical hardware. This layer, known as the Virtual Machine Monitor (VMM), handles the allocation and management of hardware resources. Because the VMM oversees the entire system's operation, it has complete control over the state and behavior of the operating systems. This allows it to monitor and modify system states dynamically, without requiring a reboot. / Facilitating Live Updates Without Reboots. / Enhanced System Reliability and Availability. / Improved Security Through Isolation. / Flexibility in System Management."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>VMM (Virtual Machine Monitor)</strong>: يدير الموارد بين OS والهاردوير</li>
+          <li><strong>Live Updates Without Reboots</strong>: تحديث الأنظمة بدون إعادة تشغيل ⚠️</li>
+          <li><strong>Isolation</strong>: اختراق VM واحد لا يؤثر على البقية</li>
+          <li><strong>Flexibility</strong>: اختبار التحديثات في VM قبل تطبيقها على النظام الفعلي</li>
+        </ul>
+      </div>
+      <div class="trap">الـ VMM يسمح بالتحديث بدون Reboot — هذه ميزة Virtualization المهمة في Patch Management</div>
+    </div>
+  </div>
+
+  <div class="final-review">
+    <h3>⚡ مراجعة سريعة — Chapter 7</h3>
+    <div class="table-wrap">
+      <table class="review-table">
+        <tr><th>السؤال</th><th>الجواب</th></tr>
+        <tr><td>تعريف Patch Management؟</td><td>Distributing and applying updates to fix vulnerabilities</td></tr>
+        <tr><td>Zero-day vulnerability يعني؟</td><td>Unknown to vendor or no fix at time of discovery</td></tr>
+        <tr><td>أول خطوة في Patch Lifecycle؟</td><td>Vulnerability Detection</td></tr>
+        <tr><td>CVE اختصار؟</td><td>Common Vulnerabilities and Exposures</td></tr>
+        <tr><td>Hotfix vs Coldfix؟</td><td>Hotfix = عاجل خارج الجدول / Coldfix = مجدول أثناء downtime</td></tr>
+        <tr><td>أعلى أولوية بين أنواع الباتشات؟</td><td>Security Patches</td></tr>
+        <tr><td>Feature Updates غرضها؟</td><td>Add new capabilities — NOT fix problems</td></tr>
+        <tr><td>Bug Fix متعلق بالأمان؟</td><td>❌ لا — functional issues only</td></tr>
+        <tr><td>أدوات Vulnerability Scanning؟</td><td>Nessus / OpenVAS / Qualys</td></tr>
+        <tr><td>VMM يسمح بـ؟</td><td>Live updates without reboots</td></tr>
+        <tr><td>HIPAA & GDPR علاقتهم بالباتشات؟</td><td>Regulatory compliance requirements</td></tr>
+        <tr><td>Rollback Mechanism وظيفته؟</td><td>Revert to previous version if update fails</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 8 ==================== -->
+<div id="ch8" class="content">
+  <div class="chapter-header">
+    <h2>Chapter 8 — Password Standards, Requirements & Virtualization</h2>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">1</span> Password Handling</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"The password system is a widely used line of defense against intruders. / Virtually every system where user login is needed requires the user to supply an ID and a password. / The system then checks its internal database to compare the supplied password to the stored one. / Access is then granted or denied."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>نظام كلمة المرور هو خط الدفاع الأول ضد المتسللين. كل نظام يقارن كلمة المرور المُدخلة بالمخزنة ثم يمنح الوصول أو يرفضه.</div>
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"The password is used to authenticate an user-ID. It grants security: The ID determines whether the user is authorized to gain access to the system. / The ID determines the privileges the user has (Access control)."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>كلمة المرور تُصادق على الـ ID. الـ ID يحدد: هل المستخدم مخوّل للدخول؟ وما صلاحياته؟</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">2</span> Password Vulnerabilities — Matching Section</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Offline dictionary attack: The attacker compares the passwords hashes against hashes of commonly used passwords. Countermeasures: controls to prevent unauthorized access to the password file, intrusion detection, blocking passwords until new ones issued. / Specific account attack: targets a specific account and submits password guesses. Countermeasure: account lockout after 3-5 tries. / Popular password attack: chooses a popular password and tries it at several user IDs. Countermeasures: policies to inhibit common passwords, scanning IP addresses. / Workstation hijacking: waits until logged-in workstation is unattended. Countermeasure: auto logout after inactivity. / Exploiting multiple password use: shared password across many devices. Countermeasure: forbid password reuse."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>نوع الهجوم</th><th>الوصف</th><th>الحل</th></tr>
+          <tr><td><strong>Offline Dictionary Attack</strong></td><td>مقارنة هاشات مع كلمات شائعة</td><td>حماية ملف الكلمات + IDS</td></tr>
+          <tr class="highlight-row"><td><strong>Specific Account Attack</strong></td><td>تخمين كلمة مرور حساب واحد</td><td class="warn">Lockout بعد 3-5 محاولات ⚠️</td></tr>
+          <tr><td><strong>Popular Password Attack</strong></td><td>كلمة شائعة على عدة حسابات</td><td>منع كلمات المرور الشائعة + مراقبة IP</td></tr>
+          <tr><td><strong>Workstation Hijacking</strong></td><td>انتظار محطة عمل بدون مراقبة</td><td>Auto logout عند عدم النشاط</td></tr>
+          <tr><td><strong>Exploiting User Mistakes</strong></td><td>كتابة الكلمة، المشاركة، Social engineering</td><td>تدريب المستخدمين + 2FA</td></tr>
+          <tr class="highlight-row"><td><strong>Multiple Password Use</strong></td><td>نفس الكلمة على أجهزة متعددة</td><td class="warn">منع إعادة استخدام الكلمات ⚠️</td></tr>
+        </table>
+      </div>
+      <div class="trap">Lockout = الحل لـ Specific Account Attack (وليس Dictionary Attack)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">3</span> Storing Passwords — Hashing</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"You can't just store password in plain text! / Solution: Don't store the password p, store its hash H(p). / When a password p' is entered, compute H(p') and compare with H(p). / For a secure hash function H, p = p' implies H(p) = H(p'). / The hash function should be slow."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>لا تُخزَّن كلمة المرور كنص واضح! بدلاً من ذلك، خزّن هاشها H(p). عند إدخال كلمة مرور جديدة p' احسب H(p') وقارنه بـ H(p).</div>
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Hashing is a one-way cryptographic function that converts any input into a fixed-length string of characters (the hash). / Hashing is deterministic: the same input always results in the same hash, but it is unfeasible to retrieve the original input from the hash."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>Hashing = دالة تشفير أحادية الاتجاه تحوّل أي مدخل لسلسلة ثابتة الطول. لا يمكن الرجوع للنص الأصلي من الهاش.</div>
+      <div class="trap">Hashing = One-way (لا يمكن عكسه) — وليس تشفير عادي يمكن فكّه!</div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: Why hash passwords?</h4>
+        <div class="open-answer">One-way function; cannot retrieve original password from hash</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">4</span> SHA-256 & Password Storage Algorithms</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"SHA-256 Produces a fixed 256 bits output. / Common strong algorithms for password storage (slow) are bcrypt, PBKDF2 or SHA512crypt. / The SHA family is used for digital signatures, data integrity and is central to Bitcoin and other blockchains."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>SHA-256</strong>: ينتج هاش ثابت 256 bit</li>
+          <li>أفضل خوارزميات لتخزين كلمات المرور (بطيئة عمداً): <strong>bcrypt</strong> / <strong>PBKDF2</strong> / <strong>SHA512crypt</strong></li>
+          <li>عائلة SHA تُستخدم في: التوقيعات الرقمية، سلامة البيانات، Bitcoin</li>
+        </ul>
+      </div>
+      <div class="trap">خوارزميات تخزين كلمات المرور يجب أن تكون بطيئة عمداً — لصعوبة هجمات التخمين!</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">5</span> Rainbow Tables & Salt</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Hashing passwords is not enough — Hashes can still reveal identical passwords. / For a given hash function, one can pre-compute common passwords. This pre-computed database is known as a rainbow table. This is a space-time tradeoff. More space = less time."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li>الهاش لوحده غير كافٍ — يمكن كشف الكلمات المتطابقة</li>
+          <li><strong>Rainbow Table</strong> = قاعدة بيانات مُحسوبة مسبقاً للهاشات الشائعة</li>
+          <li>Space-time tradeoff: مساحة أكبر = وقت أقل للكسر</li>
+        </ul>
+      </div>
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Main problem: Hashes can be pre-calculated across users and systems. / Solution: Add a random, public, salt s before hashing. / Password database contains H(p||s) and s. / When checking an entered password p', compute H(p'||s) and compare with database. / Salt should be unique for every user."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>Salt</strong> = قيمة عشوائية عامة تُضاف للكلمة قبل الهاش</li>
+          <li>قاعدة البيانات تخزن H(p||s) و s</li>
+          <li>Salt يجب أن يكون فريداً لكل مستخدم ⚠️</li>
+        </ul>
+      </div>
+      <div class="trap">Salt = عام (public) وليس سري — لكنه يُبطل هجمات Rainbow Tables لأنه فريد لكل مستخدم!</div>
+      <div class="open-ended-box">
+        <h4>✎ سؤال مقالي متوقع: What is password salting?</h4>
+        <div class="open-answer">Adding unique random value to password before hashing to prevent rainbow table attacks</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">6</span> Advantages of Salt</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"It prevents duplicate passwords from being visible in the password file. Even if two users choose the same password, those passwords will be assigned different salt values. / It greatly increases the difficulty of offline dictionary attacks. For a salt b bits long, the number of possible guesses increase by a factor of 2b. / It becomes nearly impossible to find out whether a person with passwords on two or more systems, has used the same password on all of them."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li>يمنع ظهور كلمات المرور المتطابقة في قاعدة البيانات</li>
+          <li>يزيد صعوبة هجمات Dictionary — لكل bit salt، عدد التخمينات يتضاعف بعامل 2^b</li>
+          <li>يجعل من المستحيل معرفة إذا كان المستخدم يستخدم نفس الكلمة على أنظمة متعددة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">7</span> Intelligent Password Cracking</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"The leak of huge password files has helped the hackers learn the patterns of how people choose passwords. / The big break was the leak of 32 million plaintext passwords by an SQL injection attack against online games service RockYou.com. / For example, just 6 days after the 2012 leak of 6.5 million LinkedIn password hashes more than 90% of them were cracked."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li>تسرب كلمات المرور ساعد الهاكرز على فهم أنماط اختيار الناس لكلماتهم</li>
+          <li>أكبر نقطة تحوّل: تسرب 32 مليون كلمة مرور نصية من RockYou.com عبر SQL Injection</li>
+          <li>2012: 6.5 مليون هاش من LinkedIn — كُسر 90% منها خلال 6 أيام فقط!</li>
+        </ul>
+      </div>
+      <div class="trap">RockYou.com = SQL Injection attack / LinkedIn 2012 = 90% cracked in 6 days</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">8</span> Why Passwords Are Still Popular?</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Despite many security vulnerabilities, the use of passwords remain very popular. Reasons include: / Techniques that employ client-side hardware (fingerprint scanners) require the implementation of appropriate user authentication software on both the client and server systems. / Physical tokens such as smart cards are expensive and inconvenient to carry around. / Schemes that rely on a single sign-in to multiple services create a single point of security risk. / Passwords can be changed/forgotten."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>رغم الثغرات، كلمات المرور شائعة لأن:
+        <ul>
+          <li>الـ Hardware tokens (بصمة، بطاقة ذكية) غالية وغير مريحة</li>
+          <li>Single sign-in يخلق نقطة ضعف واحدة</li>
+          <li>كلمات المرور يمكن تغييرها عند النسيان أو الاختراق</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">9</span> Virtualization (Chapter 8)</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"A virtual machine (VM) is a simulated computer, which in turn runs an operating system. / Full virtualization: the guest OS has no idea it is ran on a VM. / Hypervisor or Virtual Machine Monitor takes care of managing the guests. / Virtualization allows a higher degree of isolation compared to chroot. / One compromised guest system typically does not compromise the host. / A new OS can be installed, configured, secured and tested in a VM. The administrator then takes a snapshot. / A virtual machine can be migrated between hosts (often while running!)"</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>VM</strong> = كمبيوتر محاكى يشغّل OS</li>
+          <li><strong>Full Virtualization</strong> = Guest OS لا يعلم أنه على VM</li>
+          <li><strong>Hypervisor/VMM</strong> = يدير الـ Guests</li>
+          <li>اختراق Guest لا يضر Host عادةً</li>
+          <li>يمكن عمل Snapshot وتوزيعه على عدة أجهزة</li>
+          <li>VM يمكن نقله بين Hosts حتى وهو شغّال!</li>
+        </ul>
+      </div>
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Virtual machine escape — The most serious type of attack. Usually grants privileged access to the host machine. Which of course compromises all guests on that host. Often caused by bugs in the hypervisor. Example: Cloudburst attack on VMWare in 2009."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <strong>VM Escape</strong> = أخطر نوع هجوم على الـ VM — يمنح وصولاً مميزاً للـ Host مما يخترق جميع الـ Guests — سببه عاداً bugs في الـ Hypervisor
+      </div>
+      <div class="trap">VM Escape = أخطر هجوم في Virtualization (يخترق Host وكل الـ Guests)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">10</span> Virtualization & Cloud Computing</div>
+    <div class="section-body">
+      <div class="original"><span class="label">📖 النص الأصلي:</span>"Virtual Private Server (VPS): A virtual machine sold as a service. / VPS allows customers root access within their VPS. / Example: Amazon AWS provides the Elastic Compute Cloud (EC2), where VPS instances can be managed and created. / EC2 can be rented: On-demand (hourly rates) / Reserved (long-term rental) / Spot (bid-based, runs jobs only if the spot price is below the bid price)."</div>
+      <div class="translation"><span class="label">🌍 الترجمة:</span>
+        <ul>
+          <li><strong>VPS</strong> = VM تُباع كخدمة مع وصول root</li>
+          <li><strong>Amazon EC2</strong> = مثال على VPS Service</li>
+          <li>أنواع الاستئجار: <strong>On-demand</strong> (بالساعة) / <strong>Reserved</strong> (طويل الأمد) / <strong>Spot</strong> (مزايدة)</li>
+        </ul>
+      </div>
+      <div class="code-box">On-demand = بالساعة / Reserved = طويل الأمد / Spot = مزايدة (يعمل فقط إذا كان السعر أقل من عرضك)</div>
+    </div>
+  </div>
+
+  <div class="final-review">
+    <h3>⚡ مراجعة سريعة — Chapter 8</h3>
+    <div class="table-wrap">
+      <table class="review-table">
+        <tr><th>السؤال</th><th>الجواب</th></tr>
+        <tr><td>لماذا نهاش كلمات المرور؟</td><td>One-way — cannot retrieve original password</td></tr>
+        <tr><td>SHA-256 ينتج كم bit؟</td><td>256 bits</td></tr>
+        <tr><td>أفضل خوارزميات تخزين كلمات المرور؟</td><td>bcrypt / PBKDF2 / SHA512crypt (slow)</td></tr>
+        <tr><td>Rainbow Table ما هي؟</td><td>Pre-computed database of common password hashes</td></tr>
+        <tr><td>Salt يُضاف قبل أم بعد الهاش؟</td><td>قبل — H(password + salt)</td></tr>
+        <tr><td>Salt يجب أن يكون؟</td><td>Unique for every user ⚠️</td></tr>
+        <tr><td>Salt سري أم عام؟</td><td>Public (عام) — مخزون مع الهاش</td></tr>
+        <tr><td>Specific Account Attack حله؟</td><td>Account lockout after 3-5 tries</td></tr>
+        <tr><td>Workstation Hijacking حله؟</td><td>Auto logout after inactivity</td></tr>
+        <tr><td>RockYou.com كم كلمة تسربت؟</td><td>32 million plaintext passwords</td></tr>
+        <tr><td>LinkedIn 2012 كم كُسر؟</td><td>90% in 6 days</td></tr>
+        <tr><td>Full Virtualization تعني؟</td><td>Guest OS لا يعلم أنه على VM</td></tr>
+        <tr><td>أخطر هجوم في Virtualization؟</td><td>VM Escape — يخترق Host وكل Guests</td></tr>
+        <tr><td>VM Escape سببه؟</td><td>Bugs in the hypervisor</td></tr>
+        <tr><td>مثال VM Escape؟</td><td>Cloudburst attack on VMWare 2009</td></tr>
+        <tr><td>VPS يعني؟</td><td>Virtual machine sold as a service</td></tr>
+        <tr><td>Amazon EC2 نوع استئجار السعر بالمزايدة؟</td><td>Spot instances</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
